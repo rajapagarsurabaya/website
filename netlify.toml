@@ -1,0 +1,7 @@
+# Netlify membangun website dari folder content/ setiap kali Anda klik "Publish" di panel admin.
+[build]
+  command = "pip install -r requirements.txt && python3 build/gen.py prod"
+  publish = "dist"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"

@@ -1,0 +1,246 @@
+# Panel admin Raja Pagar Surabaya (Sveltia CMS)
+backend:
+  name: github
+  repo: rajapagarsurabaya/website
+  branch: main
+  skip_ci: true
+  auth_methods:
+  - token
+  commit_messages:
+    create: Tambah {{collection}} "{{slug}}"
+    update: Ubah {{collection}} "{{slug}}"
+    delete: Hapus {{collection}} "{{slug}}"
+    uploadMedia: Unggah foto "{{path}}"
+    deleteMedia: Hapus foto "{{path}}"
+site_url: https://rajapagarsurabaya.netlify.app
+display_url: https://rajapagarsurabaya.netlify.app
+logo:
+  src: /favicon.png
+media_folder: static/img/proyek
+public_folder: /img/proyek
+media_libraries:
+  default:
+    config:
+      max_file_size: 15000000
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 80
+          width: 1600
+          height: 1600
+slug:
+  encoding: ascii
+  clean_accents: true
+collections:
+- name: proyek
+  label: Proyek Galeri
+  label_singular: Proyek
+  description: Foto hasil pekerjaan. Proyek baru otomatis tampil paling depan di galeri, di beranda, dan di halaman layanan yang cocok.
+  folder: content/proyek
+  extension: yml
+  format: yml
+  create: true
+  delete: true
+  slug: '{{year}}{{month}}{{day}}-{{judul}}'
+  identifier_field: judul
+  summary: '{{judul}} · {{kecamatan}}'
+  sortable_fields:
+  - tanggal
+  - judul
+  thumbnail: foto
+  fields:
+  - name: judul
+    label: Judul
+    widget: string
+    hint: 'Jenis dan style pagar, contoh: Pagar sliding laser cutting'
+  - name: foto
+    label: Foto
+    widget: image
+    hint: Foto dari depan, siang hari, pagar terlihat utuh. Otomatis dikompres.
+  - name: jenis
+    label: Jenis pekerjaan
+    widget: select
+    default: Pagar
+    options:
+    - Pagar
+    - Railing tangga
+    - Railing balkon
+    - Kanopi
+    - Teralis
+    - Booth usaha
+    - Reparasi pagar
+  - name: style
+    label: Style pagar
+    widget: select
+    default: Minimalis
+    hint: Pilih "Tidak ada" untuk selain pagar
+    options:
+    - Minimalis
+    - Lisplang
+    - Laser cutting
+    - Industrial
+    - Kombinasi
+    - Tidak ada
+  - name: bukaan
+    label: Sistem bukaan
+    widget: select
+    default: Sliding
+    hint: Pilih "Tidak ada" untuk selain pagar
+    options:
+    - Sliding
+    - Sliding ganda
+    - Sliding swing
+    - Lipat
+    - Kupu tarung
+    - Tidak ada
+  - name: kecamatan
+    label: Kecamatan
+    widget: select
+    options:
+    - Asemrowo
+    - Benowo
+    - Bubutan
+    - Bulak
+    - Dukuh Pakis
+    - Gayungan
+    - Genteng
+    - Gubeng
+    - Gunung Anyar
+    - Jambangan
+    - Karang Pilang
+    - Kenjeran
+    - Krembangan
+    - Lakarsantri
+    - Mulyorejo
+    - Pabean Cantian
+    - Pakal
+    - Rungkut
+    - Sambikerep
+    - Sawahan
+    - Semampir
+    - Simokerto
+    - Sukolilo
+    - Sukomanunggal
+    - Tambaksari
+    - Tandes
+    - Tegalsari
+    - Tenggilis Mejoyo
+    - Wiyung
+    - Wonocolo
+    - Wonokromo
+    - Di luar Surabaya
+    hint: Wajib diisi, penting untuk Google
+  - name: lokasi_lain
+    label: Lokasi di luar Surabaya
+    widget: string
+    required: false
+    hint: 'Isi hanya jika kecamatan = Di luar Surabaya, contoh: Candi, Sidoarjo'
+  - name: bahan
+    label: Daftar bahan
+    widget: list
+    required: false
+    label_singular: bahan
+    hint: 'Satu baris satu bahan, contoh: Pipa kotak galvanis 40x80 1,2 mm'
+  - name: tanggal
+    label: Tanggal selesai
+    widget: datetime
+    type: date
+    format: YYYY-MM-DD
+    default: '{{now}}'
+  - name: tampilkan
+    label: Tampilkan di website
+    widget: boolean
+    default: true
+  - name: urutan
+    label: Nomor urut (jangan diubah)
+    widget: hidden
+- name: artikel
+  label: Artikel Blog
+  label_singular: Artikel
+  description: Artikel tips dan panduan pagar. Tulis dengan subjudul, daftar, dan foto.
+  folder: content/artikel
+  extension: md
+  format: frontmatter
+  create: true
+  delete: true
+  slug: '{{judul}}'
+  identifier_field: judul
+  summary: '{{judul}} · {{tanggal}}'
+  sortable_fields:
+  - tanggal
+  - judul
+  thumbnail: sampul
+  fields:
+  - name: judul
+    label: Judul (maks. 60 huruf)
+    widget: string
+    maxlength: 60
+    hint: 'Tampil di hasil Google. Masukkan kata kunci, contoh: Ukuran Standar Pagar Rumah'
+  - name: judul_lengkap
+    label: Judul lengkap di halaman
+    widget: string
+    required: false
+  - name: deskripsi
+    label: Deskripsi untuk Google (maks. 160 huruf)
+    widget: text
+    maxlength: 160
+  - name: ringkasan
+    label: Ringkasan di daftar blog
+    widget: text
+    maxlength: 140
+  - name: sampul
+    label: Foto sampul
+    widget: image
+  - name: tanggal
+    label: Tanggal terbit
+    widget: datetime
+    type: date
+    format: YYYY-MM-DD
+    default: '{{now}}'
+  - name: layanan_terkait
+    label: Layanan terkait
+    widget: select
+    multiple: true
+    required: false
+    max: 3
+    options:
+    - label: Pagar Minimalis Surabaya
+      value: pagar-minimalis-surabaya
+    - label: Pagar Sliding Surabaya
+      value: pagar-sliding-surabaya
+    - label: Pagar Lipat Surabaya
+      value: pagar-lipat-surabaya
+    - label: Pagar Kupu Tarung Surabaya
+      value: pagar-kupu-tarung-surabaya
+    - label: Pagar Laser Cutting Surabaya
+      value: pagar-laser-cutting-surabaya
+    - label: Pagar Lisplang Surabaya
+      value: pagar-lisplang-surabaya
+    - label: Pagar Industrial Surabaya
+      value: pagar-industrial-surabaya
+    - label: Kanopi Surabaya
+      value: kanopi-surabaya
+    - label: Teralis Surabaya
+      value: teralis-surabaya
+    - label: Railing Tangga Surabaya
+      value: railing-tangga-surabaya
+    - label: Railing Balkon Surabaya
+      value: railing-balkon-surabaya
+    - label: Reparasi & Service Pagar Surabaya
+      value: reparasi-pagar-surabaya
+    - label: Booth Usaha Surabaya
+      value: booth-usaha-surabaya
+  - name: ajakan
+    label: Kalimat ajakan WhatsApp di akhir artikel
+    widget: text
+    required: false
+    default: Kirim foto lokasi dan ukuran pagar Anda lewat WhatsApp. Survei dan konsultasi gratis.
+  - name: tampilkan
+    label: Tampilkan di website
+    widget: boolean
+    default: true
+  - name: body
+    label: Isi artikel
+    widget: richtext
+    hint: 'Pakai Heading 2 untuk subjudul. Foto: klik tombol gambar, tulis keterangannya di kolom alt.'
