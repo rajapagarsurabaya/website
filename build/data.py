@@ -82,8 +82,30 @@ def stem_of(path):
     return slugify(os.path.splitext(os.path.basename(path))[0])
 
 
+# Nama foto deskriptif untuk Google: "38294.webp" -> "pagar-minimalis-sliding-mulyorejo-surabaya.webp"
+_USED = set()
+def descriptive(out_img, stem, text):
+    src = os.path.join(out_img, stem + ".webp")
+    if not os.path.exists(src):
+        return stem
+    base = slugify(text)[:70].strip("-")
+    words = []
+    for w in base.split("-"):          # buang kata ganda, mis. "surabaya-surabaya"
+        if w not in words: words.append(w)
+    base = "-".join(words)
+    new, n = base, 2
+    while new in _USED or (os.path.exists(os.path.join(out_img, new + ".webp")) and new != stem):
+        new = f"{base}-{n}"; n += 1
+    _USED.add(new)
+    if new != stem:
+        shutil.copy(src, os.path.join(out_img, new + ".webp"))
+        if os.path.exists(os.path.join(out_img, stem + "-m.webp")):
+            shutil.copy(os.path.join(out_img, stem + "-m.webp"), os.path.join(out_img, new + "-m.webp"))
+    return new
+
+
 # ---------- Proyek
-def load_proyek():
+def load_proyek(out_img=None):
     items = []
     for fp in glob.glob(os.path.join(CONTENT, "proyek", "*.yml")) + glob.glob(os.path.join(CONTENT, "proyek", "*.yaml")):
         d = yaml.safe_load(open(fp, encoding="utf-8")) or {}
@@ -110,7 +132,10 @@ def load_proyek():
         else:
             loc = lain or "Surabaya"
         bahan = [str(x).strip() for x in (d.get("bahan") or []) if str(x).strip()]
-        P.append((str(d["judul"]).strip(), cat, loc, bahan, stem_of(d["foto"])))
+        stem = stem_of(d["foto"])
+        if out_img and not d.get("urutan"):
+            stem = descriptive(out_img, stem, f'{d["judul"]} {kec if kec in KECAMATAN else lain} surabaya' if kec in KECAMATAN else f'{d["judul"]} {lain}')
+        P.append((str(d["judul"]).strip(), cat, loc, bahan, stem))
         pages = set()
         if jenis == "Pagar":
             if style in STYLE_PAGE: pages.add(STYLE_PAGE[style])

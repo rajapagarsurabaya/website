@@ -14,13 +14,15 @@ BASE = "https://rajapagarsurabaya.netlify.app"
 OUT = os.path.join(DATA.ROOT, "dist" if MODE == "prod" else "preview")
 SRC = open(os.path.join(HERE, "src_beranda.html"), encoding="utf-8").read()
 TODAY = datetime.date.today().isoformat()
+GA_ID = os.environ.get("GA_MEASUREMENT_ID", "").strip()
+if not re.match(r"^G-[A-Z0-9]{4,}$", GA_ID): GA_ID = ""
 
 # ---------- Siapkan folder hasil: salin static/, olah foto proyek
 if os.path.exists(OUT): shutil.rmtree(OUT)
 shutil.copytree(DATA.STATIC, OUT, ignore=lambda d, names: ["proyek"] if os.path.abspath(d) == os.path.join(DATA.STATIC, "img") else [])
 IMG = os.path.join(OUT, "img")
 DATA.process_media(IMG)
-P, META = DATA.load_proyek()
+P, META = DATA.load_proyek(IMG)
 ARTIKEL = DATA.load_artikel()
 URUT = {m["urutan"]: k for k, m in enumerate(META) if m["urutan"]}
 def U(i):  # nomor lama (0-based, dari konten.py) -> indeks proyek sekarang
@@ -97,7 +99,24 @@ JS = JS.replace("  update();\n", """  var fm=document.getElementById("f");
   if(fm.dataset.bukaan)document.getElementById("bukaan-in").value=fm.dataset.bukaan;
   update();
 """)
-JS = bravo.JS + JS
+JS = bravo.JS + r"""
+  // Pelacak klik WhatsApp & sosial media (Google Analytics)
+  document.addEventListener("click",function(e){
+    var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;
+    var h=a.getAttribute("href")||"";
+    var wa=h.indexOf("wa.me/")>-1, sos=/instagram\.com|tiktok\.com|facebook\.com/.test(h);
+    if(!wa&&!sos)return;
+    var src=a.classList.contains("fab")?"tombol_melayang":a.id==="send"?"form_konsultasi":a.id==="lbw"?"galeri_foto":
+      a.closest(".topbar")?"bar_atas":a.closest(".pack")?"paket_harga":a.closest(".cta-box,.aside")?"artikel":
+      a.closest(".repair")?"blok_reparasi":a.closest(".area-cta")?"area_layanan":a.closest(".site-foot")?"footer":
+      a.closest(".hero,.page-hero")?"atas_halaman":"lainnya";
+    setTimeout(function(){
+      if(e.defaultPrevented||typeof gtag!=="function")return;
+      if(wa)gtag("event","klik_whatsapp",{sumber:src,halaman:location.pathname});
+      else gtag("event","klik_sosmed",{jaringan:/instagram/.test(h)?"instagram":/tiktok/.test(h)?"tiktok":"facebook",sumber:src});
+    },0);
+  },true);
+""" + JS
 JS = JS.replace('"Halo Raja Pagar Surabaya, saya ingin konsultasi.\\n\\n"', '"Halo Raja Pagar Surabaya, saya ingin konsultasi (dari website).\\n\\n"')
 
 ICONS = cut(SRC, '<div class="socials">', '</div>')
@@ -209,6 +228,9 @@ def responsive(h):
         return tag[:-1] + f' width="{w}" height="{hh}">'
     return re.sub(r'<img src="img/([a-z0-9.-]+)"[^>]*>', dims, h)
 
+GA_TAG = (f'\n<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>'
+          f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GA_ID}');</script>") if (GA_ID and MODE == "prod") else ""
+
 def page(slug, title, desc, body, lds=(), main_file=False, has_lb=False, og_img="img/og.jpg", og_type="website"):
     og_img = "img/og.jpg"
     url = BASE + "/" + slug
@@ -222,7 +244,7 @@ def page(slug, title, desc, body, lds=(), main_file=False, has_lb=False, og_img=
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#00005C">
 <meta name="google-site-verification" content="XEkNs8iCqzq4z6C6NgqM39nXdRaJjo9ZIwRbkREuTw0">
-<meta name="google-site-verification" content="6fdN-ZP9q03yXtiF5I26v_cpKBVvvsS5lZbcqPuyaT0">
+<meta name="google-site-verification" content="6fdN-ZP9q03yXtiF5I26v_cpKBVvvsS5lZbcqPuyaT0">{GA_TAG}
 <link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 {fonts}'''
     if MODE == "prod":
