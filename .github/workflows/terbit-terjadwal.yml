@@ -1,0 +1,12 @@
+# Membangun ulang website setiap Senin pagi (07.30 WIB) supaya artikel yang tanggalnya sudah tiba tayang otomatis.
+name: Terbit terjadwal
+on:
+  schedule:
+    - cron: "30 0 * * 1"
+  workflow_dispatch:
+jobs:
+  terbit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Minta Netlify membangun ulang website
+        run: curl -fsS -X POST -d '{}' "${{ secrets.NETLIFY_BUILD_HOOK }}"
