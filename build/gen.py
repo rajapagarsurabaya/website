@@ -2,7 +2,7 @@
 Dijalankan otomatis oleh Netlify: python3 build/gen.py prod  -> folder dist/
 Konten (proyek, artikel) dibaca dari folder content/ yang diedit lewat panel admin /admin.
 Ganti BASE saat pindah ke domain rajapagarsurabaya.com."""
-import sys, os, re, json, html, shutil, datetime
+import sys, os, re, json, html, shutil, datetime, hashlib, subprocess
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from konten import PAGES
@@ -10,10 +10,32 @@ import bravo
 import data as DATA
 
 MODE = sys.argv[1] if len(sys.argv) > 1 else "prod"
-BASE = "https://rajapagarsurabaya.netlify.app"
+DEFAULT_BASE = "https://rajapagarsurabaya.netlify.app"
+# Netlify mengisi URL dengan alamat utama situs, jadi saat pindah ke rajapagarsurabaya.com semua tautan ikut berubah sendiri
+BASE = os.environ.get("URL", "").strip().rstrip("/")
+if not re.match(r"^https://[a-z0-9.-]+$", BASE): BASE = DEFAULT_BASE
 OUT = os.path.join(DATA.ROOT, "dist" if MODE == "prod" else "preview")
 SRC = open(os.path.join(HERE, "src_beranda.html"), encoding="utf-8").read()
 TODAY = datetime.date.today().isoformat()
+YEAR = datetime.date.today().year
+
+def gitdate(*paths):
+    """Tanggal terakhir file diubah (untuk sitemap). Kalau git tidak tersedia, pakai tanggal hari ini."""
+    try:
+        r = subprocess.run(["git", "log", "-1", "--format=%cs", "--"] + list(paths), cwd=DATA.ROOT, capture_output=True, text=True, timeout=20)
+        d = r.stdout.strip()
+        return d if re.match(r"\d{4}-\d{2}-\d{2}$", d) else TODAY
+    except Exception:
+        return TODAY
+
+def fit(d, n=158):
+    """Ringkas deskripsi agar tidak terpotong di hasil pencarian Google."""
+    d = " ".join(str(d).split())
+    if len(d) <= n: return d
+    c = d[:n + 1]
+    i = max(c.rfind(". "), c.rfind("? "), c.rfind("! "))
+    if i >= 90: return c[:i + 1]
+    return c[:c.rfind(" ")].rstrip(" ,;:.-") + "…"
 GA_ID = os.environ.get("GA_MEASUREMENT_ID", "").strip()
 if not re.match(r"^G-[A-Z0-9]{4,}$", GA_ID): GA_ID = ""
 
@@ -23,7 +45,7 @@ shutil.copytree(DATA.STATIC, OUT, ignore=lambda d, names: ["proyek"] if os.path.
 IMG = os.path.join(OUT, "img")
 DATA.process_media(IMG)
 P, META = DATA.load_proyek(IMG)
-ARTIKEL = DATA.load_artikel()
+ARTIKEL = DATA.load_artikel(IMG)
 URUT = {m["urutan"]: k for k, m in enumerate(META) if m["urutan"]}
 def U(i):  # nomor lama (0-based, dari konten.py) -> indeks proyek sekarang
     return URUT.get(i + 1)
@@ -43,7 +65,7 @@ E = html.escape
 
 def L(slug):
     if MODE == "prod":
-        return "./" if slug == "" else slug
+        return "/" + slug
     return "index.html" if slug == "" else slug + ".html"
 
 def cut(s, a, b):
@@ -100,6 +122,9 @@ JS = JS.replace("  update();\n", """  var fm=document.getElementById("f");
   update();
 """)
 JS = bravo.JS + r"""
+  // Menu HP: tutup otomatis setelah salah satu tautan diketuk
+  (function(){var hd=document.querySelector("header"),mb=document.querySelector(".menu-btn"),nv=document.getElementById("nav");
+    if(hd&&mb&&nv)nv.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("a")){hd.classList.remove("nav-open");mb.setAttribute("aria-expanded","false")}});})();
   // Pelacak klik WhatsApp & sosial media (Google Analytics)
   document.addEventListener("click",function(e){
     var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;
@@ -122,7 +147,8 @@ JS = JS.replace('"Halo Raja Pagar Surabaya, saya ingin konsultasi.\\n\\n"', '"Ha
 ICONS = cut(SRC, '<div class="socials">', '</div>')
 FAB = cut(SRC, '<a class="fab"', '</a>')
 LB = cut(SRC, '<div class="lb" id="lb"', '</div>\n</div>')
-LD_BIZ = json.loads(cut(SRC, '<script type="application/ld+json">', '</script>')[35:-9])
+LD_BIZ = json.loads(cut(SRC, '<script type="application/ld+json">', '</script>')[35:-9].replace(DEFAULT_BASE, BASE))
+LD_BIZ["@id"] = BASE + "/#bisnis"
 
 NAV = [("", "Beranda"), ("layanan", "Layanan"), ("galeri", "Galeri"), ("blog", "Blog"), ("tentang-kami", "Tentang Kami"), ("kontak", "Kontak")]
 
@@ -170,7 +196,7 @@ def footer():
       <div><h3>Ikuti kami</h3><ul><li><a href="https://www.instagram.com/rajapagarsurabaya" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@rajapagar_surabaya" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://www.facebook.com/rajapagarsurabaya" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://wa.me/{WA}" target="_blank" rel="noopener">WhatsApp</a></li></ul>
       <h3 style="margin-top:18px">Halaman</h3><ul>{"".join(f'<li><a href="{L(s)}">{n}</a></li>' for s,n in NAV[1:])}</ul></div>
     </div>
-    <p class="copy">© 2026 Raja Pagar Surabaya. Melindungi rumahmu, melindungi keluargamu.</p>
+    <p class="copy">© {YEAR} Raja Pagar Surabaya. Melindungi rumahmu, melindungi keluargamu.</p>
   </div>
 </footer>'''
 
@@ -218,6 +244,12 @@ def responsive(h):
             return f'<img src="img/{name}.webp" srcset="img/{name}-m.webp 700w, img/{name}.webp {W}w" sizes="(max-width:440px) 92vw, (max-width:900px) 46vw, 320px"'
         return m.group(0)
     h = re.sub(r'<img src="img/([a-z0-9-]+)\.webp"(?=[^>]*loading="lazy")(?![^>]*\bid=)', f, h)
+    def hero(m):   # foto utama (LCP): versi kecil untuk HP
+        name = m.group(1)
+        if not os.path.exists(os.path.join(IMG, name + "-m.webp")): return m.group(0)
+        W = _I0.open(os.path.join(IMG, name + ".webp")).width
+        return f'<img src="img/{name}.webp" srcset="img/{name}-m.webp 700w, img/{name}.webp {W}w" sizes="(max-width:900px) 92vw, 600px"'
+    h = re.sub(r'<img src="img/([a-z0-9-]+)\.webp"(?=[^>]*fetchpriority="high")(?![^>]*srcset)', hero, h)
     from PIL import Image as _I
     def dims(m):
         tag = m.group(0)
@@ -235,7 +267,13 @@ def page(slug, title, desc, body, lds=(), main_file=False, has_lb=False, og_img=
     og_img = "img/og.jpg"
     url = BASE + "/" + slug
     ld = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in lds)
-    fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">'
+    FURL = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
+    fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    if MODE == "prod":   # font dimuat tanpa menahan tampilan halaman
+        fonts += f'<link rel="preload" as="style" href="{FURL}"><link rel="stylesheet" href="{FURL}" media="print" onload="this.media=\'all\'"><noscript><link rel="stylesheet" href="{FURL}"></noscript>'
+    else:
+        fonts += f'<link rel="stylesheet" href="{FURL}">'
+    desc = fit(desc)
     head = f'''<title>{E(title)}</title>
 <meta name="description" content="{E(desc)}">
 <link rel="canonical" href="{url}">
@@ -248,8 +286,8 @@ def page(slug, title, desc, body, lds=(), main_file=False, has_lb=False, og_img=
 <link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 {fonts}'''
     if MODE == "prod":
-        style = '<link rel="stylesheet" href="assets/style.css">'
-        script = '<script src="assets/main.js" defer></script>'
+        style = '<link rel="stylesheet" href="assets/style.css?v=__VER__">'
+        script = '<script src="assets/main.js?v=__VER__" defer></script>'
     else:
         style = "<style>" + CSS + "</style>"
         script = "<script>\n(function(){" + JS + "</script>"
@@ -265,7 +303,7 @@ def page(slug, title, desc, body, lds=(), main_file=False, has_lb=False, og_img=
 {script}'''
     if MODE == "preview" and main_file:
         return f'{head.split(chr(10))[0]}\n<meta name="claude:viewport-fit-sides" content="cover">\n{chr(10).join(head.split(chr(10))[1:])}\n{style}\n{bodyhtml}'
-    return f'''<!doctype html>
+    out = f'''<!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -277,6 +315,12 @@ def page(slug, title, desc, body, lds=(), main_file=False, has_lb=False, og_img=
 {bodyhtml}
 </body>
 </html>'''
+    return rooted(out) if MODE == "prod" else out
+
+def rooted(h):
+    """Semua alamat file dimulai dari akar situs (/img/..., /assets/...) supaya tetap benar di alamat apa pun, termasuk halaman 404."""
+    h = re.sub(r'\b(src|href)="(img/|assets/|favicon\.png|apple-touch-icon\.png)', r'\1="/\2', h)
+    return re.sub(r'srcset="([^"]+)"', lambda m: 'srcset="' + re.sub(r'(^|,\s*)img/', r'\1/img/', m.group(1)) + '"', h)
 
 pages = {}
 
@@ -402,7 +446,7 @@ ld_home["areaServed"] = [{"@type":"City","name":"Surabaya"}] + [{"@type":"Admini
 ld_home["hasMap"] = "https://maps.app.goo.gl/nuU3oVcy5RbrZWRW9"
 ld_home["founder"] = {"@type":"Person","name":bravo.OWNER[1]}
 pages[""] = page("", "Jasa Pagar Surabaya & Bengkel Las Pagar | Raja Pagar",
-  "Raja Pagar Surabaya: jasa pembuatan pagar minimalis, sliding, lipat, laser cutting, lisplang, kanopi, teralis, dan railing sejak 1985. Survei gratis di 31 kecamatan, garansi las 1 tahun.",
+  "Jasa pagar Surabaya sejak 1985: pagar minimalis, sliding, lipat, laser cutting, kanopi, teralis, dan railing. Survei gratis di 31 kecamatan, garansi las 1 tahun.",
   main, [ld_home, ld_faq(bravo.FAQ)], main_file=True, has_lb=True)
 
 # ---------- Halaman layanan
@@ -441,7 +485,7 @@ body = f'''<section class="page-hero"><div class="wrap"><nav class="crumb" aria-
 <section><div class="wrap">{hub}</div></section>
 {consult()}'''
 pages["layanan"] = page("layanan", "Layanan Pagar, Kanopi & Railing Surabaya | Raja Pagar",
-  "Daftar layanan Raja Pagar Surabaya: pagar minimalis, sliding, lipat, kupu tarung, laser cutting, lisplang, industrial, kanopi, teralis, railing, booth usaha, dan reparasi pagar.",
+  "Layanan Raja Pagar Surabaya: pagar minimalis, sliding, lipat, laser cutting, lisplang, industrial, kanopi, teralis, railing, booth usaha, dan reparasi pagar.",
   body, [ld_crumb([("", "Beranda"), ("layanan", "Layanan")])])
 
 # ---------- Galeri
@@ -453,7 +497,7 @@ body = f'''<section class="page-hero"><div class="wrap"><nav class="crumb" aria-
 <section><div class="wrap">{filters}<div class="gal" id="gal">{"".join(gal_button(k) for k in order)}</div></div></section>
 {consult()}'''
 pages["galeri"] = page("galeri", "Galeri Proyek Pagar Surabaya | Raja Pagar Surabaya",
-  f"Lihat {len(VIS)} proyek pagar minimalis, sliding, lipat, laser cutting, lisplang, industrial, railing, dan booth usaha buatan Raja Pagar Surabaya lengkap dengan spesifikasi bahan.",
+  f"Lihat {len(VIS)} proyek pagar minimalis, sliding, lipat, laser cutting, lisplang, railing, dan booth usaha buatan Raja Pagar Surabaya, lengkap dengan daftar bahan.",
   body, [ld_crumb([("", "Beranda"), ("galeri", "Galeri")])], has_lb=True)
 
 # ---------- Tentang kami
@@ -533,6 +577,7 @@ def tgl(d):
 
 for a in ARTIKEL:
     s = a["slug"]
+    a["mod"] = max(a["date"], gitdate(os.path.join("content", "artikel", a["file"]))) if TODAY >= a["date"] else a["date"]
     others = [x for x in ARTIKEL if x["slug"] != s]
     aside = f'''<aside class="aside">
   <div class="aside-box"><h3>Konsultasi gratis</h3><p style="color:var(--muted);font-size:.94rem">Survei gratis di 31 kecamatan Surabaya. Pengelasan bergaransi 1 tahun.</p><a class="btn btn-cta" href="https://wa.me/{WA}" target="_blank" rel="noopener" style="color:var(--on-yellow)">Chat WhatsApp</a></div>
@@ -547,13 +592,15 @@ for a in ARTIKEL:
 <section><div class="wrap article">
   <article class="prose-a">{render_article(a)}</article>
   {aside}
-</div></section>'''
+</div></section>
+{consult()}'''
     ld_art = {"@context":"https://schema.org","@type":"BlogPosting","headline":a["h1"],"description":a["desc"],
-              "image":f'{BASE}/img/{a["cover"]}.webp',"datePublished":a["date"],"dateModified":a["date"],
+              "image":f'{BASE}/img/{a["cover"]}.webp',"datePublished":a["date"],"dateModified":a["mod"],
               "inLanguage":"id-ID","mainEntityOfPage":f"{BASE}/{s}",
               "author":{"@type":"Organization","name":"Raja Pagar Surabaya","url":BASE+"/"},
               "publisher":{"@type":"Organization","name":"Raja Pagar Surabaya","logo":{"@type":"ImageObject","url":BASE+"/img/logo.png"}}}
-    pages[s] = page(s, a["title"] if len(a["title"]) <= 62 else a["title"][:62], a["desc"], body,
+    a_title = a["title"] if len(a["title"]) <= 62 else a["title"][:63].rsplit(" ", 1)[0].rstrip(" ,:;-")
+    pages[s] = page(s, a_title, a["desc"], body,
                     [ld_art, ld_crumb([("", "Beranda"), ("blog", "Blog"), (s, a["title"])])], og_type="article")
 
 cards_b = "".join(f'''<a class="post-card" href="{L(a["slug"])}"><img src="img/{a["cover"]}.webp" alt="{E(a["title"])}" width="888" height="624" loading="lazy"><div class="pb"><p class="meta">{a["menit"]} menit baca</p><h2 style="font-size:1.3rem">{E(a["title"])}</h2><p>{E(a["excerpt"])}</p><span class="more" style="font-weight:600;color:var(--link)">Baca artikel →</span></div></a>''' for a in ARTIKEL)
@@ -568,26 +615,32 @@ pages["blog"] = page("blog", "Blog & Tips Pagar Besi | Raja Pagar Surabaya",
 # ---------- 404
 pages["404"] = page("404", "Halaman tidak ditemukan | Raja Pagar Surabaya", "Halaman yang Anda cari tidak ada.",
   f'<section class="page-hero"><div class="wrap"><h1>Halaman tidak ditemukan</h1><div class="intro"><p>Alamat yang Anda buka mungkin salah ketik atau sudah dipindah.</p></div><div class="actions"><a class="btn btn-cta" href="{L("")}">Kembali ke beranda</a><a class="btn btn-ghost" href="{L("layanan")}">Lihat layanan</a></div></div></section>')
-pages["404"] = pages["404"].replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"')
+pages["404"] = pages["404"].replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"').replace('href="#kontak"', f'href="{L("kontak")}#kontak"')
 
 # galeri: foto teratas jangan lazy (LCP)
 _g = pages["galeri"]; _i = _g.index('id="gal"')
-pages["galeri"] = _g[:_i] + _g[_i:].replace('loading="lazy"', 'loading="eager"', 4)
+pages["galeri"] = _g[:_i] + _g[_i:].replace('loading="lazy"', 'loading="eager" fetchpriority="high"', 1).replace('loading="lazy"', 'loading="eager"', 3)
 # ---------- Tulis
 os.makedirs(OUT + "/assets", exist_ok=True)
 if os.path.isdir(os.path.join(DATA.ROOT, "admin")):
     shutil.copytree(os.path.join(DATA.ROOT, "admin"), os.path.join(OUT, "admin"))
-for s, h in pages.items():
-    open(os.path.join(OUT, ("index" if s == "" else s) + ".html"), "w", encoding="utf-8").write(h)
 if MODE == "prod":
-    open(OUT + "/assets/style.css", "w").write(CSS)
-    open(OUT + "/assets/main.js", "w").write("(function(){" + JS)
-    LASTMOD = {a["slug"]: a["date"] for a in ARTIKEL}
+    JS = JS.replace('"img/"', '"/img/"')
+# Versi aset: berubah setiap isi CSS/JS berubah, sehingga HP pengunjung langsung mengambil file terbaru
+VER = hashlib.md5((CSS + JS).encode("utf-8")).hexdigest()[:10]
+for s, h in pages.items():
+    open(os.path.join(OUT, ("index" if s == "" else s) + ".html"), "w", encoding="utf-8").write(h.replace("__VER__", VER))
+if MODE == "prod":
+    open(OUT + "/assets/style.css", "w", encoding="utf-8").write(CSS)
+    open(OUT + "/assets/main.js", "w", encoding="utf-8").write("(function(){" + JS)
+    SITE_MOD = gitdate("build", "content/proyek", "static")
+    LASTMOD = {a["slug"]: a["mod"] for a in ARTIKEL}
+    if ARTIKEL: LASTMOD["blog"] = max([SITE_MOD] + [a["mod"] for a in ARTIKEL])
     urls = [""] + [p["slug"] for p in PAGES] + ["layanan", "galeri", "blog"] + [a["slug"] for a in ARTIKEL] + ["tentang-kami", "kontak"]
     open(OUT + "/sitemap.xml", "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-        "".join(f"  <url><loc>{BASE}/{u}</loc><lastmod>{LASTMOD.get(u, TODAY)}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+        "".join(f"  <url><loc>{BASE}/{u}</loc><lastmod>{LASTMOD.get(u, SITE_MOD)}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     open(OUT + "/robots.txt", "w").write(f"User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: {BASE}/sitemap.xml\n")
-    open(OUT + "/_headers", "w").write("/img/*\n  Cache-Control: public, max-age=604800\n/assets/*\n  Cache-Control: public, max-age=604800\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: SAMEORIGIN\n")
+    open(OUT + "/_headers", "w").write("/img/*\n  Cache-Control: public, max-age=604800\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/admin/*\n  X-Robots-Tag: noindex, nofollow\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: SAMEORIGIN\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n")
     open(OUT + "/_redirects", "w").write("/service-pagar-surabaya  /reparasi-pagar-surabaya  301\n")
 else:
     os.rename(os.path.join(OUT, "404.html"), os.path.join(OUT, "halaman-404.html"))

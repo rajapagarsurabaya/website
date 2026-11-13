@@ -108,8 +108,12 @@ def descriptive(out_img, stem, text):
 def load_proyek(out_img=None):
     items = []
     for fp in glob.glob(os.path.join(CONTENT, "proyek", "*.yml")) + glob.glob(os.path.join(CONTENT, "proyek", "*.yaml")):
-        d = yaml.safe_load(open(fp, encoding="utf-8")) or {}
-        if not d.get("judul") or not d.get("foto"):
+        try:
+            d = yaml.safe_load(open(fp, encoding="utf-8")) or {}
+        except Exception as e:      # satu file rusak tidak boleh menggagalkan seluruh website
+            print("  ! proyek dilewati (file tidak terbaca):", os.path.basename(fp), e)
+            continue
+        if not isinstance(d, dict) or not d.get("judul") or not d.get("foto"):
             print("  ! proyek dilewati (judul/foto kosong):", os.path.basename(fp))
             continue
         d["_file"] = os.path.basename(fp)
@@ -133,6 +137,9 @@ def load_proyek(out_img=None):
             loc = lain or "Surabaya"
         bahan = [str(x).strip() for x in (d.get("bahan") or []) if str(x).strip()]
         stem = stem_of(d["foto"])
+        if out_img and not os.path.exists(os.path.join(out_img, stem + ".webp")):
+            print("  ! proyek dilewati (file foto tidak ditemukan):", d["_file"], d["foto"])
+            continue
         if out_img and not d.get("urutan"):
             stem = descriptive(out_img, stem, f'{d["judul"]} {kec if kec in KECAMATAN else lain} surabaya' if kec in KECAMATAN else f'{d["judul"]} {lain}')
         P.append((str(d["judul"]).strip(), cat, loc, bahan, stem))
@@ -148,10 +155,18 @@ def load_proyek(out_img=None):
 
 
 # ---------- Artikel
-def load_artikel():
+def load_artikel(out_img=None):
     out = []
     for fp in glob.glob(os.path.join(CONTENT, "artikel", "*.md")):
-        fm, body = load_fm(fp)
+        try:
+            fm, body = load_fm(fp)
+        except Exception as e:
+            print("  ! artikel dilewati (file tidak terbaca):", os.path.basename(fp), e)
+            continue
+        if not isinstance(fm, dict): continue
+        cover = stem_of(fm.get("sampul") or "")
+        if out_img and not os.path.exists(os.path.join(out_img, cover + ".webp")):
+            cover = "proyek-17"      # sampul kosong atau hilang: pakai foto bawaan
         if fm.get("tampilkan") is False or not fm.get("judul"):
             continue
         slug = slugify(os.path.splitext(os.path.basename(fp))[0])
@@ -162,7 +177,8 @@ def load_artikel():
             "h1": str(fm.get("judul_lengkap") or fm["judul"]).strip(),
             "desc": str(fm.get("deskripsi") or fm.get("ringkasan") or fm["judul"]).strip(),
             "excerpt": str(fm.get("ringkasan") or fm.get("deskripsi") or "").strip(),
-            "cover": stem_of(fm.get("sampul") or ""),
+            "cover": cover,
+            "file": os.path.basename(fp),
             "date": as_date(fm.get("tanggal")),
             "menit": max(2, round(words / 180)),
             "related_svc": list(fm.get("layanan_terkait") or []),
