@@ -36,6 +36,14 @@ def load_fm(path):
     return {}, txt
 
 
+def hari_ini_wib():
+    """Tanggal hari ini di Surabaya (WIB, UTC+7). Bisa diuji dengan variabel TANGGAL_UJI=YYYY-MM-DD."""
+    uji = os.environ.get("TANGGAL_UJI")
+    if uji:
+        return uji
+    return (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=7)).strftime("%Y-%m-%d")
+
+
 def as_date(v):
     if isinstance(v, (datetime.date, datetime.datetime)):
         return v.strftime("%Y-%m-%d")
@@ -168,6 +176,9 @@ def load_artikel(out_img=None):
         if out_img and not os.path.exists(os.path.join(out_img, cover + ".webp")):
             cover = "proyek-17"      # sampul kosong atau hilang: pakai foto bawaan
         if fm.get("tampilkan") is False or not fm.get("judul"):
+            continue
+        # Artikel terjadwal: baru tayang kalau tanggal terbitnya sudah tiba (zona waktu Surabaya/WIB)
+        if as_date(fm.get("tanggal")) > hari_ini_wib():
             continue
         slug = slugify(os.path.splitext(os.path.basename(fp))[0])
         words = len(re.findall(r"\w+", body))
