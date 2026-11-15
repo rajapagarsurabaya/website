@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - teralis-surabaya
 ajakan: Ada gerbang yang susah dikunci atau pagar yang perlu diperbaiki sebelum mudik? Chat kami lewat WhatsApp secepatnya supaya masih sempat dikerjakan.
-tampilkan: false
+tampilkan: true
 ---
 
 Mudik itu momen yang ditunggu setahun sekali. Sayang banget kalau di kampung halaman pikiran malah tertinggal di rumah. "Tadi gerbang sudah dikunci belum ya?" Supaya tenang, luangkan sepuluh menit untuk checklist ini sebelum berangkat.

@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - pagar-lipat-surabaya
 ajakan: Masih ragu soal tinggi pagar? Kirim foto tampak depan rumah Anda lewat WhatsApp, kami bantu sarankan ukurannya saat survei gratis.
-tampilkan: false
+tampilkan: true
 ---
 
 "Pagarnya enaknya setinggi apa ya?" Ini salah satu pertanyaan pertama yang muncul saat orang mau bikin pagar. Jawabannya memang nggak satu angka untuk semua rumah. Tinggi yang pas tergantung apa yang paling Anda butuhkan.

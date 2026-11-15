@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - reparasi-pagar-surabaya
 ajakan: Mau pesan pagar tanpa was-was? Kirim foto lokasi dan ukurannya lewat WhatsApp. Bahan, cat, dan garansi kami tulis jelas di penawaran.
-tampilkan: false
+tampilkan: true
 ---
 
 Pagar itu dipasang sekali untuk dipakai bertahun-tahun. Sayangnya, banyak orang baru sadar ada yang kurang setelah pagarnya terpasang. Supaya Anda nggak mengalami hal yang sama, ini tujuh kesalahan yang paling sering kami temui.

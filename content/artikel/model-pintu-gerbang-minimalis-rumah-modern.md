@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-laser-cutting-surabaya
 - pagar-lisplang-surabaya
 ajakan: Sudah ada model yang bikin jatuh hati? Kirim foto tampak depan rumah Anda lewat WhatsApp, kami bantu sesuaikan modelnya.
-tampilkan: false
+tampilkan: true
 ---
 
 Memilih pintu gerbang itu mirip memilih sepatu untuk baju. Modelnya bagus belum tentu cocok. Yang penting serasi dengan gaya rumahnya. Berikut enam model pintu gerbang hasil kerja kami, beserta gaya rumah yang paling pas untuk masing-masing.

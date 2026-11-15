@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-minimalis-surabaya
 - reparasi-pagar-surabaya
 ajakan: Ingin pagar seperti ini di rumah Anda? Kirim foto lokasi dan perkiraan ukurannya lewat WhatsApp. Survei dan pengukuran gratis di Surabaya.
-tampilkan: false
+tampilkan: true
 ---
 
 Banyak yang penasaran, sebenarnya bagaimana sih proses sebuah pagar dibuat, dari awal sampai berdiri di depan rumah? Kali ini kami ajak Anda melihat salah satu pekerjaan kami: pagar sliding minimalis di Mulyorejo, Surabaya.

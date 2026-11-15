@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-kupu-tarung-surabaya
 - reparasi-pagar-surabaya
 ajakan: Gerbang Anda berat atau susah dikunci? Kirim video singkat saat gerbang dibuka lewat WhatsApp, kami bantu cek komponen mana yang perlu diperbaiki.
-tampilkan: false
+tampilkan: true
 ---
 
 Saat membahas pintu gerbang, orang biasanya fokus pada model dan warna. Padahal yang menentukan gerbang terasa ringan atau berat, mulus atau seret, adalah komponen-komponen kecil. Yuk kenali satu per satu.

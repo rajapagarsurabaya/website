@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - reparasi-pagar-surabaya
 ajakan: Punya pertanyaan lain soal pagar besi? Tanyakan saja lewat WhatsApp. Konsultasi gratis, kami jawab apa adanya.
-tampilkan: false
+tampilkan: true
 ---
 
 Soal pagar besi, banyak sekali "katanya". Kata tetangga begini, kata saudara begitu. Sebagian benar, sebagian lagi bikin salah langkah. Yuk, kita luruskan tujuh yang paling sering kami dengar.

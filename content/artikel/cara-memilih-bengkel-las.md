@@ -10,7 +10,7 @@ layanan_terkait:
 - reparasi-pagar-surabaya
 - pagar-sliding-surabaya
 ajakan: Ingin bengkel yang jelas sejak awal? Kirim foto lokasi dan ukurannya lewat WhatsApp. Survei gratis, bahan dan garansi kami tulis di penawaran.
-tampilkan: false
+tampilkan: true
 ---
 
 Banyak bengkel las di Surabaya. Sebagian bagus, sebagian lagi hanya pandai menjanjikan. Sebelum memutuskan, ada beberapa hal yang bisa Anda perhatikan supaya tidak salah pilih.

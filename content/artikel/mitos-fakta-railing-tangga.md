@@ -10,7 +10,7 @@ layanan_terkait:
 - railing-balkon-surabaya
 - reparasi-pagar-surabaya
 ajakan: Punya pertanyaan soal railing tangga? Tanyakan lewat WhatsApp. Konsultasi gratis, kami jawab apa adanya.
-tampilkan: false
+tampilkan: true
 ---
 
 Railing tangga sering dianggap pelengkap saja. Padahal ia tumpuan tangan saat naik turun tangga. Berikut beberapa mitos yang sering beredar, beserta faktanya.

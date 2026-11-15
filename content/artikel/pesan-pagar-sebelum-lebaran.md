@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-lisplang-surabaya
 - reparasi-pagar-surabaya
 ajakan: Ingin pagar terpasang sebelum Lebaran? Chat kami lewat WhatsApp sekarang supaya jadwal survei dan produksinya masih longgar.
-tampilkan: false
+tampilkan: true
 ---
 
 Menjelang Lebaran, rasanya semua orang ingin rumahnya tampil rapi untuk menyambut keluarga dan tamu. Pagar dan pintu gerbang biasanya jadi yang pertama dilirik, karena itulah yang pertama dilihat tamu.

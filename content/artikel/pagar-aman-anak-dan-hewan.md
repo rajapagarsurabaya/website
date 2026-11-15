@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - reparasi-pagar-surabaya
 ajakan: Punya anak kecil atau hewan peliharaan? Kirim foto pagar yang ada lewat WhatsApp, kami bantu sarankan model yang lebih aman saat survei gratis.
-tampilkan: false
+tampilkan: true
 ---
 
 Pagar bukan cuma pembatas. Untuk rumah dengan anak kecil atau hewan peliharaan, pagar juga menjaga mereka tetap di tempat yang aman. Berikut beberapa hal yang perlu dipikirkan.

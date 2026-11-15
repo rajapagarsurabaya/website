@@ -10,7 +10,7 @@ layanan_terkait:
 - railing-balkon-surabaya
 - reparasi-pagar-surabaya
 ajakan: Mau railing tangga untuk luar atau dalam rumah? Kirim foto lokasi lewat WhatsApp. Survei dan konsultasi gratis di Surabaya.
-tampilkan: false
+tampilkan: true
 ---
 
 Railing di dalam rumah hanya menghadapi debu dan sentuhan tangan. Railing di luar rumah harus menghadapi hujan, panas, dan udara lembap setiap hari. Karena itu, keduanya perlu dibuat dengan cara yang tidak sama.

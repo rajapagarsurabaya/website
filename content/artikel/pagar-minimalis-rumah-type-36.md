@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-lipat-surabaya
 - pagar-sliding-surabaya
 ajakan: Punya rumah mungil dan bingung pagar yang pas? Kirim foto tampak depan dan lebar lahannya lewat WhatsApp. Survei gratis di Surabaya.
-tampilkan: false
+tampilkan: true
 ---
 
 Rumah type 36 itu mungil tapi nyaman. Tantangannya ada di depan: lahan terbatas, carport pas-pasan, dan Anda tetap ingin pagar yang aman tanpa bikin rumah terasa sumpek. Bisa kok. Kuncinya ada di empat pilihan ini.

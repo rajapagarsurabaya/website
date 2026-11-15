@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - railing-tangga-surabaya
 ajakan: Menemukan karat atau gerbang yang mulai berat? Kirim fotonya lewat WhatsApp, kami bantu cek sebelum hujan makin deras.
-tampilkan: false
+tampilkan: true
 ---
 
 Musim hujan itu seperti ujian bagi besi di rumah. Yang sudah siap biasanya aman, yang belum siap mulai bermasalah. Sebelum hujan turun terus, luangkan sepuluh menit untuk memeriksa beberapa hal ini.

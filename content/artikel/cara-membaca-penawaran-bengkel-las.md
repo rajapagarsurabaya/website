@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - reparasi-pagar-surabaya
 ajakan: Ingin penawaran pagar yang jelas dan rinci? Kirim foto lokasi dan ukurannya lewat WhatsApp. Bahan dan ketebalan kami tulis di penawaran.
-tampilkan: false
+tampilkan: true
 ---
 
 Anda sudah minta penawaran ke dua atau tiga bengkel las. Angkanya beda-beda, isinya juga beda-beda. Mana yang lebih baik? Sebelum memutuskan, yuk kenali dulu apa saja yang seharusnya ada di sebuah penawaran pagar.

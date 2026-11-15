@@ -10,7 +10,7 @@ layanan_terkait:
 - railing-balkon-surabaya
 - pagar-minimalis-surabaya
 ajakan: Mau railing tangga yang pas dengan rumah Anda? Kirim foto tangga dan jumlah anak tangganya lewat WhatsApp. Survei gratis di Surabaya.
-tampilkan: false
+tampilkan: true
 ---
 
 Saat memilih railing tangga, pilihan modelnya sebenarnya mengerucut ke dua arah: jeruji tegak (vertikal) atau garis mendatar (horizontal). Sama-sama bisa terlihat minimalis. Tapi ada beberapa perbedaan yang enaknya Anda tahu sebelum memutuskan.

@@ -10,7 +10,7 @@ layanan_terkait:
 - railing-tangga-surabaya
 - pagar-minimalis-surabaya
 ajakan: Sudah punya model railing balkon incaran? Kirim gambarnya dan foto balkon Anda lewat WhatsApp, kami bantu sesuaikan dengan ukurannya.
-tampilkan: false
+tampilkan: true
 ---
 
 Balkon itu wajah lantai dua rumah Anda. Dari jalan, railing balkon ikut menentukan apakah rumah terlihat rapi atau biasa saja. Kalau Anda sedang cari ide, ini enam model yang bisa jadi inspirasi.

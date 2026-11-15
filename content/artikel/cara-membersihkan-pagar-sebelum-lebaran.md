@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-minimalis-surabaya
 - pagar-sliding-surabaya
 ajakan: Setelah dibersihkan ternyata ada karat atau cat yang mengelupas? Kirim fotonya lewat WhatsApp, kami bantu cek apakah cukup dicat ulang.
-tampilkan: false
+tampilkan: true
 ---
 
 Lebaran sebentar lagi. Rumah mulai dibersihkan, gorden dicuci, kue kering dipesan. Jangan lupa satu hal yang pertama kali dilihat tamu: pagar. Kabar baiknya, bikin pagar terlihat segar lagi itu gampang dan nggak perlu alat macam-macam.

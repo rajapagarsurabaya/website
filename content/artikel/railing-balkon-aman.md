@@ -10,7 +10,7 @@ layanan_terkait:
 - railing-tangga-surabaya
 - pagar-minimalis-surabaya
 ajakan: Mau pasang atau ganti railing balkon? Kirim foto balkon dan perkiraan panjangnya lewat WhatsApp. Survei dan pengukuran gratis di Surabaya.
-tampilkan: false
+tampilkan: true
 ---
 
 Balkon itu tempat paling enak buat ngopi sore atau menjemur pakaian. Tapi balkon juga satu-satunya bagian rumah yang membatasi Anda dengan ketinggian. Jadi sebelum pilih-pilih model, yuk pastikan dulu lima hal ini.

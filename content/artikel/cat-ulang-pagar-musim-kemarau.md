@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-minimalis-surabaya
 - pagar-sliding-surabaya
 ajakan: Pagar Anda sudah kusam atau mulai mengelupas? Kirim fotonya lewat WhatsApp, kami bantu cek apakah cukup dicat ulang.
-tampilkan: false
+tampilkan: true
 ---
 
 Hujan sudah mulai jarang, matahari mulai rajin muncul. Buat pagar besi, ini kabar baik. Musim kemarau adalah waktu yang paling pas untuk mengecat ulang pagar. Kenapa begitu?

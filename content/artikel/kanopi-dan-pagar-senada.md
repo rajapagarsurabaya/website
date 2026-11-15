@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-minimalis-surabaya
 - pagar-lisplang-surabaya
 ajakan: Ingin kanopi dan pagar yang senada? Kirim foto tampak depan rumah lewat WhatsApp. Survei gratis, kami bantu rancang dari awal.
-tampilkan: false
+tampilkan: true
 ---
 
 Kanopi dan pagar sering dibuat di waktu yang berbeda, oleh orang yang berbeda, dan hasilnya tidak saling menyambung. Tampak depan jadi terlihat ramai. Kalau dirancang bersama, rumah akan terlihat lebih kompak.

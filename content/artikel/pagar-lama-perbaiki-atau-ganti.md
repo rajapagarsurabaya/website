@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-minimalis-surabaya
 - pagar-sliding-surabaya
 ajakan: Bingung pagar Anda perlu diperbaiki atau diganti? Kirim foto pagar dan bagian yang bermasalah lewat WhatsApp, kami jelaskan kedua pilihannya dengan jujur.
-tampilkan: false
+tampilkan: true
 ---
 
 Pagar Anda sudah menemani bertahun-tahun. Sekarang mulai berat dibuka, ada karat di sana-sini, dan catnya sudah kusam. Pertanyaan berikutnya: diperbaiki saja, atau sekalian ganti baru?

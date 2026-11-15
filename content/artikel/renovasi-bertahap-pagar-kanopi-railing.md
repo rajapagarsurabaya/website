@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-minimalis-surabaya
 - kanopi-surabaya
 ajakan: Mau mulai renovasi bertahap tapi bingung urutannya? Kirim foto tampak depan rumah lewat WhatsApp. Konsultasi dan survei gratis di Surabaya.
-tampilkan: false
+tampilkan: true
 ---
 
 Tidak semua rumah bisa direnovasi sekaligus. Anggaran sering terbatas, dan prioritas bisa berubah. Kabar baiknya, renovasi bertahap tetap bisa menghasilkan tampak depan yang rapi, asalkan urutannya dipikirkan dari awal.

@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-minimalis-surabaya
 - pagar-sliding-surabaya
 ajakan: Pagar perlu dirapikan sebelum 17 Agustus? Kirim fotonya lewat WhatsApp, kami bantu cek apa yang perlu diperbaiki.
-tampilkan: false
+tampilkan: true
 ---
 
 Bulan Agustus selalu terasa beda. Kampung mulai dihias, bendera dikibarkan, dan lomba-lomba siap digelar. Banyak kampung juga mengadakan lomba kebersihan atau lomba gapura. Mumpung semangatnya sedang tinggi, yuk sekalian rapikan tampak depan rumah.

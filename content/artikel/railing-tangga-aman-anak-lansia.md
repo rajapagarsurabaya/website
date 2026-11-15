@@ -10,7 +10,7 @@ layanan_terkait:
 - railing-balkon-surabaya
 - reparasi-pagar-surabaya
 ajakan: Ingin railing tangga yang aman untuk seluruh keluarga? Kirim foto tangga Anda lewat WhatsApp. Survei dan pengukuran gratis di Surabaya.
-tampilkan: false
+tampilkan: true
 ---
 
 Tangga itu dilewati semua penghuni rumah, dari si kecil yang baru lancar berjalan sampai kakek nenek yang langkahnya sudah pelan. Kebutuhan mereka berbeda, tapi railing yang dirancang dengan benar bisa menjaga semuanya.

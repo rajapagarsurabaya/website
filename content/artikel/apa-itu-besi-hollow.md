@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - pagar-industrial-surabaya
 ajakan: Ada istilah di penawaran yang bikin bingung? Tanyakan saja lewat WhatsApp, kami jelaskan dengan bahasa yang gampang.
-tampilkan: false
+tampilkan: true
 ---
 
 Baru pertama kali mau bikin pagar, lalu di penawaran tertulis "hollow 40x60 tebal 1,2 mm"? Wajar kalau bingung. Tenang, istilahnya memang terdengar teknis, tapi artinya sederhana kok.

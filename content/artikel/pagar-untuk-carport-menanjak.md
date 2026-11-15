@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-kupu-tarung-surabaya
 - reparasi-pagar-surabaya
 ajakan: Carport Anda menanjak atau miring? Kirim foto dan video saat gerbang dibuka lewat WhatsApp, kami bantu carikan solusinya saat survei gratis.
-tampilkan: false
+tampilkan: true
 ---
 
 Banyak rumah di Surabaya yang lantai carport-nya dibuat lebih tinggi dari jalan, supaya air tidak masuk saat hujan deras. Masuk akal. Tapi efek sampingnya sering terasa di pintu gerbang: gerbang tersangkut lantai, harus diangkat sedikit, atau tidak bisa dibuka lebar.

@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - railing-tangga-surabaya
 ajakan: Menemukan karat, las retak, atau gerbang yang mulai berat? Kirim fotonya lewat WhatsApp, kami bantu cek apakah cukup diperbaiki.
-tampilkan: false
+tampilkan: true
 ---
 
 Tahun baru biasanya identik dengan beres-beres rumah. Lemari dirapikan, gudang dibersihkan. Nah, sekalian saja luangkan 15 menit untuk keliling mengecek bagian besi di rumah Anda. Mumpung masih musim hujan, tanda-tanda masalahnya justru paling gampang terlihat sekarang.

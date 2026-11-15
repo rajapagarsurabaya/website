@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - pagar-lipat-surabaya
 ajakan: Siap mulai dari langkah pertama? Kirim foto lokasi dan model yang Anda suka lewat WhatsApp. Konsultasi dan survei gratis.
-tampilkan: false
+tampilkan: true
 ---
 
 Buat yang belum pernah pesan pagar, prosesnya mungkin terasa membingungkan. Harus mulai dari mana? Harus siapkan apa? Tenang, alurnya sederhana kok. Di tempat kami, semuanya berjalan dalam enam langkah.

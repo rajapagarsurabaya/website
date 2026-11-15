@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-kupu-tarung-surabaya
 - pagar-sliding-surabaya
 ajakan: Gerbang Anda menunjukkan salah satu tanda ini? Kirim foto atau videonya lewat WhatsApp, kami bantu cek apakah cukup diperbaiki.
-tampilkan: false
+tampilkan: true
 ---
 
 Pintu gerbang itu seperti sepatu yang dipakai tiap hari. Lama-lama pasti ada bagian yang aus. Bedanya, gerbang biasanya memberi tanda dulu sebelum benar-benar rusak. Kalau Anda mengenali salah satu dari lima tanda ini, sebaiknya jangan ditunda.

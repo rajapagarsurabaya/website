@@ -10,7 +10,7 @@ layanan_terkait:
 - reparasi-pagar-surabaya
 - pagar-laser-cutting-surabaya
 ajakan: Pagar Anda perlu dicat ulang atau mau bikin baru dengan cat yang lengkap? Kirim fotonya lewat WhatsApp, kami jelaskan pilihannya.
-tampilkan: false
+tampilkan: true
 ---
 
 "Kenapa nggak langsung dicat warna saja? Kan lebih cepat." Pertanyaan ini wajar banget. Dari luar, pagar yang dicat sekali dan dua kali memang terlihat sama. Bedanya baru terasa setelah beberapa musim hujan.

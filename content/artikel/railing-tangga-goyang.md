@@ -10,7 +10,7 @@ layanan_terkait:
 - reparasi-pagar-surabaya
 - railing-balkon-surabaya
 ajakan: Railing tangga Anda terasa goyang? Kirim video singkat saat railing digoyang lewat WhatsApp, kami bantu cek penyebabnya.
-tampilkan: false
+tampilkan: true
 ---
 
 Railing tangga yang goyang sedikit sering dianggap sepele. "Masih bisa dipakai kok." Padahal railing adalah tumpuan tangan saat naik turun tangga, terutama bagi anak dan orang tua. Kalau tumpuan itu tidak kokoh, risikonya bukan cuma rasa tidak nyaman.

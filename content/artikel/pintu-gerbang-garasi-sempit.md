@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - pagar-kupu-tarung-surabaya
 ajakan: Carport Anda sempit? Kirim foto carport dan ukuran lebar pagarnya lewat WhatsApp, kami bantu pilihkan model bukaan yang pas.
-tampilkan: false
+tampilkan: true
 ---
 
 Mobil sudah masuk, tapi pintu gerbang tidak bisa ditutup karena kena bemper. Atau sebaliknya, gerbang harus dibuka dulu sebelum mobil bisa mundur sedikit. Kalau Anda mengalaminya, masalahnya ada di model bukaan pintu gerbang.

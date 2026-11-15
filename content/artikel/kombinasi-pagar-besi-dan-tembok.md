@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - pagar-laser-cutting-surabaya
 ajakan: Punya tembok yang ingin dipadukan dengan pagar? Kirim foto tampak depan rumah lewat WhatsApp, kami bantu sarankan ukuran dan modelnya saat survei gratis.
-tampilkan: false
+tampilkan: true
 ---
 
 Tidak semua rumah harus pagar besi penuh. Banyak yang memadukan tembok dengan besi. Hasilnya lebih kokoh, privasinya terjaga, dan tampak depan terlihat lebih berkelas.

@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-minimalis-surabaya
 - pagar-sliding-surabaya
 ajakan: Tertarik dengan pagar lisplang motif kayu? Kirim foto tampak depan rumah Anda lewat WhatsApp, kami bantu sarankan warna dan modelnya.
-tampilkan: false
+tampilkan: true
 ---
 
 Banyak orang jatuh hati pada pagar kayu. Hangat, alami, dan bikin rumah terasa adem. Tapi begitu ingat soal rayap, lapuk, dan perawatannya, niat itu biasanya surut. Nah, pagar lisplang motif kayu hadir sebagai jalan tengahnya.

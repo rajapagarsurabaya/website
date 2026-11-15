@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - reparasi-pagar-surabaya
 ajakan: Pertanyaan Anda belum terjawab? Tanyakan langsung lewat WhatsApp. Konsultasi gratis, tanpa harus langsung pesan.
-tampilkan: false
+tampilkan: true
 ---
 
 Setiap hari ada saja pertanyaan yang masuk ke WhatsApp kami, dan banyak yang mirip-mirip. Daripada Anda penasaran, kami kumpulkan delapan yang paling sering ditanyakan, lengkap dengan jawabannya.

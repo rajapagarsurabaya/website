@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-minimalis-surabaya
 - pagar-sliding-surabaya
 ajakan: Punya motif incaran untuk pagar laser cutting? Kirim gambarnya lewat WhatsApp, kami bantu sesuaikan dengan ukuran pagar Anda.
-tampilkan: false
+tampilkan: true
 ---
 
 Pernah lewat depan rumah yang pagarnya bermotif daun, bunga, atau garis-garis cantik, lalu membatin, "Kok bisa serapi itu ya?" Besar kemungkinan itu pagar laser cutting. Modelnya memang sedang banyak disukai. Tapi cocok nggak ya untuk rumah Anda?

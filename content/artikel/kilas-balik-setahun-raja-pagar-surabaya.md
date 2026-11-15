@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - railing-tangga-surabaya
 ajakan: Ingin rumah Anda jadi cerita kami berikutnya? Kirim foto lokasi dan kebutuhan Anda lewat WhatsApp. Konsultasi dan survei gratis di Surabaya.
-tampilkan: false
+tampilkan: true
 ---
 
 Tidak terasa, sudah setahun kami rutin berbagi cerita dan tips di sini. Dari pintu gerbang yang seret saat hujan sampai cara membaca penawaran bengkel las. Terima kasih sudah membaca. Sebagai penutup tahun, kami ajak Anda melihat lagi proyek yang pernah kami ceritakan, dan pelajaran yang paling sering terbukti di lapangan.

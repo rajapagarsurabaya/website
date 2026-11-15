@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-laser-cutting-surabaya
 - pagar-lisplang-surabaya
 ajakan: Masih bimbang antara pagar tertutup atau berongga? Kirim foto tampak depan rumah Anda lewat WhatsApp, kami bantu carikan jalan tengahnya.
-tampilkan: false
+tampilkan: true
 ---
 
 Ada dua tipe pemilik rumah. Yang satu ingin terasnya tidak kelihatan dari jalan. Yang lain ingin rumahnya tetap terasa terbuka dan berangin. Dua-duanya masuk akal, dan dari sinilah muncul pertanyaan: pagar tertutup atau berongga?

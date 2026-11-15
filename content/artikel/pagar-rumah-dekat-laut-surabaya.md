@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-laser-cutting-surabaya
 - reparasi-pagar-surabaya
 ajakan: Rumah Anda di kawasan pesisir Surabaya? Kirim foto lokasi lewat WhatsApp, kami sarankan bahan dan cat yang sesuai saat survei gratis.
-tampilkan: false
+tampilkan: true
 ---
 
 Tinggal di Surabaya bagian utara atau timur, seperti Kenjeran, Bulak, atau Semampir, punya enaknya sendiri. Anginnya sepoi-sepoi dan dekat dengan laut. Tapi ada satu hal yang sering bikin gemas pemilik rumah di sana: pagar kok cepat banget berkarat?

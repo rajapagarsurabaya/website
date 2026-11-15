@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-minimalis-surabaya
 - reparasi-pagar-surabaya
 ajakan: Ingin pintu gerbang kupu tarung seperti ini? Kirim foto lokasi dan lebar bukaannya lewat WhatsApp. Survei dan pengukuran gratis di Surabaya.
-tampilkan: false
+tampilkan: true
 ---
 
 Sebagian besar pagar yang kami kerjakan memakai sistem sliding. Tapi ada rumah yang justru lebih cocok dengan pintu gerbang model ayun dua daun, atau yang akrab disebut kupu tarung. Salah satunya proyek kami di Genteng, Surabaya.

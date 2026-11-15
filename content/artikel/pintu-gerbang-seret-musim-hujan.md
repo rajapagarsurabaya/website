@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - pagar-kupu-tarung-surabaya
 ajakan: Gerbang masih seret setelah dicek? Kirim video singkat saat gerbang dibuka lewat WhatsApp, kami bantu lihat penyebabnya.
-tampilkan: false
+tampilkan: true
 ---
 
 Pintu gerbang mulai seret tiap kali hujan? Tenang, Anda nggak sendirian. Ini keluhan yang paling sering kami dengar begitu musim hujan datang. Kabar baiknya, penyebabnya sering kali sepele dan bisa Anda cek sendiri dulu sebelum memanggil tukang.

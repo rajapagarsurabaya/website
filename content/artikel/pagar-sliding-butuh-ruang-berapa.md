@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-lipat-surabaya
 - pagar-minimalis-surabaya
 ajakan: Ingin tahu apakah ruang di rumah Anda cukup untuk pagar sliding? Kirim foto dan ukuran lebar pagar lewat WhatsApp. Survei gratis di Surabaya.
-tampilkan: false
+tampilkan: true
 ---
 
 Pagar sliding itu praktis karena tidak memakan ruang di depan gerbang. Tapi ia tetap butuh ruang di samping, tempat pagar bergeser saat dibuka. Kalau ruangnya kurang, pagar tidak bisa dibuka penuh. Karena itu, sebelum memesan, ukur dulu.

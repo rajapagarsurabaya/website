@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - pagar-lipat-surabaya
 ajakan: Belum yakin model bukaan yang pas? Kirim foto dan lebar bukaan gerbang Anda lewat WhatsApp, kami bantu pilihkan saat survei gratis.
-tampilkan: false
+tampilkan: true
 ---
 
 Kalau Anda memilih pintu gerbang model ayun, yang dibuka seperti pintu rumah, pertanyaan berikutnya pasti ini: mau satu daun atau dua daun? Dua-duanya bagus. Tinggal mana yang paling cocok dengan rumah Anda.

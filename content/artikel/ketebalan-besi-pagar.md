@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - pagar-laser-cutting-surabaya
 ajakan: Bingung ketebalan besi yang pas untuk pagar Anda? Kirim ukuran pagarnya lewat WhatsApp, kami sarankan saat survei gratis.
-tampilkan: false
+tampilkan: true
 ---
 
 Di penawaran pagar, Anda akan menemukan angka kecil seperti "1,2 mm" atau "2 mm". Itu ketebalan dinding besinya. Selisihnya memang tidak sampai satu milimeter, tapi pengaruhnya ke pagar cukup terasa. Yuk, bahas pelan-pelan.

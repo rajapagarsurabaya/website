@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - pagar-laser-cutting-surabaya
 ajakan: Rumah Anda di posisi hook? Kirim foto kedua sisi rumah lewat WhatsApp, kami bantu rencanakan pagarnya saat survei gratis.
-tampilkan: false
+tampilkan: true
 ---
 
 Rumah pojok, atau rumah hook, punya banyak kelebihan. Halamannya biasanya lebih luas, cahaya lebih banyak, dan tampilannya lebih menonjol. Tapi soal pagar, rumah hook punya tantangan sendiri karena ada dua sisi yang menghadap jalan.

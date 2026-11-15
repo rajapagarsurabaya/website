@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-laser-cutting-surabaya
 - pagar-sliding-surabaya
 ajakan: Punya ruko atau usaha dan butuh pagar yang kuat? Kirim foto lokasi lewat WhatsApp. Survei gratis di Surabaya, kami bantu sarankan bahan dan modelnya.
-tampilkan: false
+tampilkan: true
 ---
 
 Pagar rumah dibuka beberapa kali sehari. Pagar ruko atau tempat usaha bisa dibuka puluhan kali, dengan kendaraan, barang, dan pelanggan yang keluar masuk. Karena itu, pagar usaha perlu dipikirkan dengan cara yang berbeda.

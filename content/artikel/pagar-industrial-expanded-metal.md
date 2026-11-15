@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - pagar-minimalis-surabaya
 ajakan: Tertarik dengan pagar industrial untuk rumah atau tempat usaha Anda? Kirim fotonya lewat WhatsApp, kami bantu sarankan komposisi bahannya.
-tampilkan: false
+tampilkan: true
 ---
 
 Ada rumah yang ingin terlihat lembut dan hangat. Ada juga yang ingin terlihat tegas dan berkarakter. Untuk yang kedua, pagar bergaya industrial sering jadi jawabannya.

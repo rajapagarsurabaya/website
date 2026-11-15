@@ -10,7 +10,7 @@ layanan_terkait:
 - railing-balkon-surabaya
 - pagar-minimalis-surabaya
 ajakan: Ingin railing tangga seperti ini di rumah Anda? Kirim foto tangga Anda lewat WhatsApp. Survei dan pengukuran gratis di Surabaya.
-tampilkan: false
+tampilkan: true
 ---
 
 Setiap proyek punya ceritanya sendiri. Yang satu ini berawal dari sebuah video di TikTok, dan dari sedikit keraguan yang wajar sekali dirasakan siapa pun yang baru pertama kali memesan.

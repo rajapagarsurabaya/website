@@ -10,7 +10,7 @@ layanan_terkait:
 - pagar-sliding-surabaya
 - pagar-minimalis-surabaya
 ajakan: Pagar sliding mulai berat atau berbunyi? Kirim video singkat saat pagar digeser lewat WhatsApp, kami bantu cek rodanya.
-tampilkan: false
+tampilkan: true
 ---
 
 Roda itu bagian paling kecil di pagar sliding, tapi kerjanya paling berat. Seluruh bobot pagar bertumpu di situ, setiap hari, setiap kali pagar dibuka dan ditutup. Untungnya, roda jarang rusak tiba-tiba. Biasanya ada tanda-tandanya dulu.
