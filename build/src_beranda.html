@@ -445,16 +445,8 @@ details p{color:var(--muted);margin-top:8px}
         <label for="nama">Nama<input id="nama" autocomplete="name" placeholder="Nama Anda"></label>
         <label for="lokasi">Lokasi (kecamatan)<input id="lokasi" placeholder="Contoh: Rungkut"></label>
       </div>
-      <div class="row2">
-        <label for="layanan-in">Layanan<select id="layanan-in"><option>Pagar baru</option><option>Kanopi</option><option>Teralis</option><option>Railing tangga</option><option>Railing balkon</option><option>Booth usaha</option><option>Reparasi pagar</option></select></label>
-        <label for="bukaan-in">Sistem bukaan<select id="bukaan-in"><option>Belum tahu</option><option>Sliding</option><option>Sliding ganda</option><option>Sliding swing</option><option>Kupu tarung</option><option>Lipat</option></select></label>
-      </div>
-      <div class="row2">
-        <label for="ukuran">Perkiraan ukuran (lebar × tinggi)<input id="ukuran" placeholder="Contoh: 5 m × 1,8 m"></label>
-        <label for="paket-in">Paket<select id="paket-in"><option>Belum tahu</option><option>Ekonomis</option><option>Standar</option><option>Premium</option></select></label>
-      </div>
-      <label for="catatan">Catatan<textarea id="catatan" placeholder="Style yang diinginkan, waktu survei, dll."></textarea></label>
-      <div class="preview" id="pv" aria-live="polite"></div>
+      <label for="layanan-in">Layanan<select id="layanan-in"><option>Pagar baru</option><option>Kanopi</option><option>Teralis</option><option>Railing tangga</option><option>Railing balkon</option><option>Booth usaha</option><option>Reparasi pagar</option></select></label>
+      <label for="catatan">Catatan (boleh dikosongkan)<textarea id="catatan" placeholder="Ukuran perkiraan, model yang diinginkan, waktu survei, dll."></textarea></label>
       <p class="err" id="err" hidden>Isi nama dan lokasi dulu supaya tim bisa menjadwalkan survei.</p>
       <a class="btn send" id="send" href="#" target="_blank" rel="noopener">Kirim lewat WhatsApp</a>
     </form>
@@ -546,16 +538,16 @@ details p{color:var(--muted);margin-top:8px}
   })});
 
   // Form ke WhatsApp
-  var ids=["nama","lokasi","layanan-in","bukaan-in","ukuran","paket-in","catatan"];
+  var ids=["nama","lokasi","layanan-in","catatan"];
   function v(id){return document.getElementById(id).value.trim();}
   function msg(){
+    var bk=document.getElementById("f").dataset.bukaan;
     return "Halo Raja Pagar Surabaya, saya ingin konsultasi.\n\n"+
       "Nama: "+(v("nama")||"-")+"\nLokasi: "+(v("lokasi")||"-")+", Surabaya\nLayanan: "+v("layanan-in")+
-      "\nSistem bukaan: "+v("bukaan-in")+"\nUkuran: "+(v("ukuran")||"-")+"\nPaket: "+v("paket-in")+
-      "\nCatatan: "+(v("catatan")||"-");
+      (bk?"\nSistem bukaan: "+bk:"")+"\nCatatan: "+(v("catatan")||"-");
   }
-  var send=document.getElementById("send"),pv=document.getElementById("pv"),err=document.getElementById("err");
-  function update(){var m=msg();pv.textContent=m;send.href="https://wa.me/6285607988227?text="+encodeURIComponent(m);if(v("nama")&&v("lokasi"))err.hidden=true;}
+  var send=document.getElementById("send"),err=document.getElementById("err");
+  function update(){var m=msg();send.href="https://wa.me/6285607988227?text="+encodeURIComponent(m);if(v("nama")&&v("lokasi"))err.hidden=true;}
   ids.forEach(function(id){document.getElementById(id).addEventListener("input",update)});
   send.addEventListener("click",function(e){if(!v("nama")||!v("lokasi")){e.preventDefault();err.hidden=false;}});
   document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();});

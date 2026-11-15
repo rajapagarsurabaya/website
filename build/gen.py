@@ -118,7 +118,6 @@ JS = wrap(JS, "  // Galeri filter", "  // Proses ke hasil", 'document.getElement
 JS = wrap(JS, "  // Form ke WhatsApp", None, 'document.getElementById("f")')
 JS = JS.replace("  update();\n", """  var fm=document.getElementById("f");
   if(fm.dataset.layanan)document.getElementById("layanan-in").value=fm.dataset.layanan;
-  if(fm.dataset.bukaan)document.getElementById("bukaan-in").value=fm.dataset.bukaan;
   update();
 """)
 JS = bravo.JS + r"""
@@ -431,6 +430,18 @@ main = f'''{hero}
     <ul class="areas areas-wrap">{areas}</ul>
     <div class="area-note"><span class="lg"><i></i> Ada proyek kami di galeri</span></div>
     <div class="area-cta"><p><b>Lokasi Anda di luar Surabaya?</b> Chat kami dulu untuk cek jadwal di Sidoarjo, Gresik, dan sekitarnya.</p><a class="btn btn-cta" href="https://wa.me/{WA}?text=Halo%20Raja%20Pagar%20Surabaya%2C%20apakah%20bisa%20melayani%20lokasi%20saya%20di%20" target="_blank" rel="noopener">Tanya via WhatsApp</a></div>
+  </div>
+</section>
+
+<section id="peta-lokasi" style="padding-top:0">
+  <div class="wrap detail">
+    <div>
+      <p class="eyebrow">Lokasi workshop</p>
+      <h2>Datang langsung ke bengkel kami</h2>
+      <p class="lead">Jl. Tanah Merah Utara 166 B, Surabaya. Buka Senin–Sabtu, 08.00–16.00 WIB.</p>
+      <div class="actions"><a class="btn btn-cta" href="https://www.google.com/maps/dir/?api=1&amp;destination=Jl.+Tanah+Merah+Utara+166+B+Surabaya" target="_blank" rel="noopener">Petunjuk arah</a><a class="btn btn-line" href="https://maps.app.goo.gl/nuU3oVcy5RbrZWRW9" target="_blank" rel="noopener">Buka di Google Maps</a></div>
+    </div>
+    {'<div class="map-wrap"><iframe title="Lokasi workshop Raja Pagar Surabaya" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Jl.+Tanah+Merah+Utara+166+B+Surabaya&amp;output=embed"></iframe></div>' if MODE == "prod" else '<p class="lead">Peta Google Maps tampil di versi website asli.</p>'}
   </div>
 </section>
 
