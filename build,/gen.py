@@ -477,7 +477,7 @@ for p in PAGES:
     og = f'img/{fname(p["photos"][0])}.webp' if p["photos"] and isinstance(p["photos"][0], int) else (f'img/{p["photos"][0]}.webp' if p["photos"] else "img/proyek-17.webp")
     pages[s] = page(s, p["title"], p["desc"], body, [svc_ld, ld_faq(p["faq"]), ld_crumb([("", "Beranda"), ("layanan", "Layanan"), (s, p["h1"])])], has_lb=any(isinstance(x,int) for x in p["photos"]), og_img=og)
 
-# ---------- Landing page pagar laser cutting (isi di build/landing.py, menggantikan halaman layanan biasa)
+# ---------- Landing page (laser cutting, industrial; isi di build/landing.py, menggantikan halaman layanan biasa)
 import landing; landing.buat(globals())
 
 # ---------- Layanan (hub)
