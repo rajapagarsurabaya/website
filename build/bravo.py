@@ -53,9 +53,15 @@ nav.main .dd-menu a{display:block;color:var(--ink);background:none;text-decorati
 nav.main .dd-menu a:hover{background:var(--bg);color:var(--link)}
 .menu-btn{display:none;margin-left:auto;background:rgba(255,255,255,.1);color:var(--on-navy);border:0;border-radius:4px;padding:9px 12px;font:600 .9rem var(--body);cursor:pointer;align-items:center;gap:6px}
 .menu-btn svg{width:18px;height:18px}
+.theme-btn{display:inline-grid;place-items:center;width:44px;height:44px;margin-left:8px;background:rgba(255,255,255,.1);color:var(--on-navy);border:0;border-radius:4px;cursor:pointer;padding:0}
+.theme-btn:hover{background:rgba(255,255,255,.18)}
+.theme-btn:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+.theme-btn svg{width:20px;height:20px;grid-area:1/1;display:none}
+.theme-btn[data-mode="auto"] .ti-auto,.theme-btn[data-mode="light"] .ti-light,.theme-btn[data-mode="dark"] .ti-dark{display:block}
 @media (max-width:980px){
   .hdr{flex-wrap:nowrap}
-  .menu-btn{display:inline-flex}
+  .menu-btn{display:inline-flex;margin-left:0}
+  .theme-btn{margin-left:auto}
   .nav-cta{display:none}
   nav.main{display:none;position:absolute;left:0;right:0;top:100%;background:var(--navy);flex-direction:column;align-items:stretch;padding:8px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));max-height:calc(100vh - 120px);overflow:auto;border-top:1px solid rgba(255,255,255,.1);box-shadow:0 18px 30px rgba(0,0,40,.3)}
   header.nav-open nav.main{display:flex}
@@ -135,6 +141,20 @@ header .wrap.hdr{position:relative}
 
 JS = r"""
   // Menu HP dan dropdown layanan
+  // Tombol ganti tampilan: otomatis, terang, gelap (disimpan di HP pengunjung)
+  (function(){
+    var btn=document.getElementById("themeBtn");if(!btn)return;
+    var root=document.documentElement,names={auto:"otomatis",light:"terang",dark:"gelap"},order=["auto","light","dark"];
+    function cur(){var t=root.getAttribute("data-theme");return t==="light"||t==="dark"?t:"auto"}
+    function show(){var m=cur();btn.setAttribute("data-mode",m);btn.setAttribute("aria-label","Ganti tampilan, sekarang "+names[m]);btn.title="Tampilan: "+names[m]}
+    btn.addEventListener("click",function(){
+      var n=order[(order.indexOf(cur())+1)%3];
+      if(n==="auto")root.removeAttribute("data-theme");else root.setAttribute("data-theme",n);
+      try{if(n==="auto")localStorage.removeItem("tema");else localStorage.setItem("tema",n)}catch(e){}
+      show();
+    });
+    show();
+  })();
   (function(){
     var hd=document.querySelector("header"),mb=document.querySelector(".menu-btn");
     if(mb)mb.addEventListener("click",function(){var o=hd.classList.toggle("nav-open");mb.setAttribute("aria-expanded",o)});

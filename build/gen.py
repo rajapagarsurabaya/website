@@ -183,6 +183,7 @@ def header(cur):
       f'{a("galeri", "Galeri")}{a("blog", "Blog")}{a("tentang-kami", "Tentang Kami")}{a("kontak", "Kontak")}'
       f'<a class="btn btn-cta nav-cta-m" href="#kontak">Survei Gratis</a></nav>\n'
       f'    <a class="btn btn-cta nav-cta" href="#kontak">Survei Gratis</a>\n'
+      f'    <button class="theme-btn" id="themeBtn" type="button" aria-label="Ganti tampilan: otomatis" title="Ganti tampilan"><svg class="ti-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg><svg class="ti-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="ti-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg></button>\n'
       f'    <button class="menu-btn" aria-expanded="false" aria-controls="nav">{MENU_IC}Menu</button>\n'
       f'  </div>\n</header>')
 
@@ -281,6 +282,7 @@ def page(slug, title, desc, body, lds=(), main_file=False, has_lb=False, og_img=
 <meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}/{og_img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Raja Pagar Surabaya, jasa pagar dan bengkel las pagar">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#00005C">
+<script>try{{var t=localStorage.getItem("tema");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}}catch(e){{}}</script>
 <meta name="google-site-verification" content="XEkNs8iCqzq4z6C6NgqM39nXdRaJjo9ZIwRbkREuTw0">
 <meta name="google-site-verification" content="6fdN-ZP9q03yXtiF5I26v_cpKBVvvsS5lZbcqPuyaT0">{GA_TAG}
 <link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
