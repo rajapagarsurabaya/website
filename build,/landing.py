@@ -115,6 +115,67 @@ LANDING = [
   catatan_ph="Isian yang diinginkan, waktu survei, dll.",
   related=["pagar-laser-cutting-surabaya", "pagar-lipat-surabaya", "pagar-sliding-surabaya"],
  ),
+
+ dict(
+  slug="pagar-minimalis-surabaya",
+  nama="pagar minimalis",
+  title="Pagar Minimalis Surabaya, 3 Pilihan Paket | Raja Pagar",
+  desc="Jasa pagar minimalis Surabaya sejak 1985. Sliding, lipat, kupu tarung, isian jeruji atau plat. Survei gratis di 31 kecamatan, garansi las 1 tahun.",
+  kicker="Sejak 1985 · Paling banyak dipesan · Survei gratis",
+  sub="Pagar dengan garis tegas dan rapi yang cocok untuk hampir semua rumah, dari rumah di gang sampai rumah dua lantai di perumahan. Satu desain tersedia dalam tiga paket harga, dan pengelasan bergaransi 1 tahun.",
+  apa_h2="Apa itu pagar minimalis?",
+  apa=["Pagar minimalis adalah pagar besi dengan bentuk sederhana: rangka pipa kotak, isian jeruji vertikal atau horizontal, "
+       "tanpa banyak ukiran. Justru karena sederhana, tampilannya bersih, modern, dan tidak cepat ketinggalan zaman.",
+       "Ini jenis pagar yang paling banyak dipesan di Raja Pagar. Tingkat privasinya bisa diatur, mulai dari jeruji terbuka "
+       "sampai plat penuh, dan bisa ditambah ornamen kecil sebagai pemanis.",
+       "Pagar minimalis cocok untuk rumah tipe kecil, rumah di perumahan, sampai rumah dua lantai. "
+       "Semua sistem bukaan bisa: sliding, sliding ganda, sliding swing, kupu tarung, maupun lipat."],
+  poin=[("Bisa semua sistem bukaan", "Sliding, sliding ganda, sliding swing, kupu tarung, atau lipat."),
+        ("Isian sesuai privasi", "Jeruji terbuka, plat setengah, atau plat penuh."),
+        ("Spek jelas di penawaran", "Ukuran dan ketebalan besi tertulis jelas sesuai paket, jadi Anda tahu persis apa yang dibayar."),
+        ("Finishing rapi", "Cat dasar epoxy filler lalu cat akhir, warna bisa dipilih.")],
+  pilihan=[
+    dict(eyebrow="Pilihan isian", h2="Seberapa tertutup pagar yang Anda mau?",
+         lead="Desainnya tetap minimalis, tingkat privasinya bisa disesuaikan dengan kebutuhan rumah Anda.",
+         item=[("Jeruji terbuka", "Jeruji vertikal atau horizontal dari atas sampai bawah.",
+                ["Halaman terlihat lega dan terang", "Sirkulasi udara paling lancar", "Tampilan paling ringan dan simpel"]),
+               ("Plat setengah", "Jeruji di bagian atas, plat penutup di bagian bawah.",
+                ["Kendaraan dan teras lebih tertutup", "Hewan kecil tidak mudah masuk", "Seimbang antara privasi dan sirkulasi udara"]),
+               ("Plat penuh", "Plat menutup hampir seluruh daun pagar, bisa diberi ornamen.",
+                ["Privasi paling terjaga", "Cocok untuk rumah di pinggir jalan ramai", "Bisa ditambah ornamen bunga, daun, atau wajik"])]),
+    dict(id="galvanis-hitam", eyebrow="Pilihan bahan", h2="Hollow galvanis atau hollow hitam?",
+         lead="Dua jenis besi yang paling sering dipakai untuk pagar minimalis. Jenis dan ukurannya ditulis jelas di penawaran.",
+         item=[("Hollow galvanis", "Besi berlapis seng yang warnanya keperakan.",
+                ["Lebih tahan karat", "Cocok untuk pagar yang terkena hujan langsung", "Perawatan lebih ringan"]),
+               ("Hollow hitam", "Besi tanpa lapisan seng yang dilindungi cat dasar dan cat akhir.",
+                ["Bisa memakai ukuran lebih tebal", "Harga lebih hemat", "Perlu dicat ulang secara berkala"])]),
+  ],
+  spek=["Rangka pipa kotak 40x80 mm atau 50x100 mm",
+        "Jeruji pipa 15x35 mm atau 20x20 mm, jarak rapat atau renggang",
+        "Plat galvanis penutup bagian bawah atau penuh",
+        "Pengaku tengah horizontal agar daun pagar lebih kaku",
+        "Cat dasar epoxy filler, lalu cat akhir sesuai warna pilihan"],
+  faq=[("Berapa harga pagar minimalis per meter di Surabaya?",
+        "Harga dihitung per meter persegi dan tergantung desain, bahan, dan sistem bukaan. Kirim ukuran dan contoh desain lewat WhatsApp, lalu kami beri penawaran untuk paket Ekonomis, Standar, dan Premium."),
+       ("Apa beda paket Ekonomis, Standar, dan Premium?",
+        "Desainnya sama, yang berbeda adalah spek bahannya. Rincian tiap paket kami jelaskan lewat WhatsApp dan tertulis di penawaran, supaya Anda bisa membandingkan dengan tenang."),
+       ("Lebih baik hollow galvanis atau hollow hitam?",
+        "Hollow galvanis lebih tahan karat, cocok untuk pagar yang terkena hujan langsung. Hollow hitam bisa lebih tebal dengan harga lebih hemat. Tim kami akan menyarankan saat survei."),
+       ("Bisa ditambah ornamen?",
+        "Bisa. Ornamen bunga, daun, atau wajik bisa ditambahkan sebagai aksen, misalnya dicat emas, tanpa menghilangkan kesan minimalisnya."),
+       ("Sistem bukaan apa saja yang bisa dipakai?",
+        "Semua sistem bisa: sliding, sliding ganda, sliding swing, kupu tarung, dan lipat. Tim kami akan menyarankan yang paling pas dengan lebar dan bentuk halaman Anda saat survei."),
+       ("Berapa lama pembuatan pagar minimalis?",
+        "Rata-rata 14 hari kerja sejak DP diterima.")],
+  foto_tambahan=[],
+  cap={},
+  wa_utama="Halo Raja Pagar Surabaya, saya tertarik pagar minimalis. Boleh minta info dan jadwal survei?",
+  wa_kirim=("Kirim contoh desain via WA", "Halo Raja Pagar Surabaya, saya mau kirim contoh desain pagar minimalis. Berikut gambarnya:"),
+  catatan="Style: minimalis. Isian: ",
+  catatan_ph="Isian (jeruji terbuka / plat setengah / plat penuh), waktu survei, dll.",
+  hero=0,  # foto pembuka: proyek-01 (Semampir)
+  related=["pagar-sliding-surabaya", "pagar-lipat-surabaya", "pagar-kupu-tarung-surabaya"],
+ ),
 ]
 
 
@@ -142,7 +203,7 @@ def _satu(g, c):
     proyek = [x for x in p["photos"] if isinstance(x, int)]
     foto = proyek + [x for x in p["photos"] if isinstance(x, str)] + c["foto_tambahan"]
     if proyek:
-        k = proyek[0]
+        k = c["hero"] if c.get("hero") in proyek else proyek[0]
         hero_img = f'img/{fname(k)}.webp'
         hero_alt = f"{P[k][0]} di {P[k][2]}, buatan Raja Pagar Surabaya"
         hero_cap = f"{P[k][0]} · {P[k][2]}"
@@ -158,15 +219,19 @@ def _satu(g, c):
     rel = "".join(f'<a class="svc" href="{L(r)}"><h3>{E(BYSLUG[r]["h1"])}</h3><p>{E(BYSLUG[r]["short"])}</p><span class="more">Selengkapnya →</span></a>' for r in (c["related"] or p["related"]) if r in BYSLUG)
 
     pilihan = ""
-    if c["pilihan"]:
-        pl = c["pilihan"]
+    pls = c["pilihan"] or []
+    if isinstance(pls, dict):
+        pls = [pls]
+    for n, pl in enumerate(pls):
         kartu = "".join(
             f'<div class="point"><h3>{E(t)}</h3><p>{E(d)}</p><ul style="margin:10px 0 0;padding-left:18px;display:grid;gap:4px;color:var(--muted);font-size:.94rem">{"".join(f"<li>{E(x)}</li>" for x in li)}</ul></div>'
             for t, d, li in pl["item"])
-        pilihan = f'''<section id="pilihan-isian" style="padding-top:0"><div class="wrap">
-  <div class="sec-head"><p class="eyebrow">Pilihan isian</p><h2>{E(pl["h2"])}</h2><p class="lead">{E(pl["lead"])}</p></div>
-  <div class="points" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">{kartu}</div>
-</div></section>'''
+        sid = pl.get("id", "pilihan-isian" if n == 0 else f"pilihan-{n + 1}")
+        pilihan += f'''<section id="{sid}" style="padding-top:0"><div class="wrap">
+  <div class="sec-head"><p class="eyebrow">{E(pl.get("eyebrow", "Pilihan isian"))}</p><h2>{E(pl["h2"])}</h2><p class="lead">{E(pl["lead"])}</p></div>
+  <div class="points" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))">{kartu}</div>
+</div></section>
+'''
 
     paket = sec("paket").replace("Tanyakan detail dan harga tiap paket lewat WhatsApp.",
                                  f"Berlaku juga untuk {nama}. Tanyakan detail dan harga tiap paket lewat WhatsApp.")
