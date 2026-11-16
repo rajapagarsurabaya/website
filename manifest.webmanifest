@@ -1,0 +1,17 @@
+{
+  "name": "Kalkulator Pagar Raja Pagar Surabaya",
+  "short_name": "Kalkulator Pagar",
+  "description": "Penghitung kebutuhan bahan, HPP, dan harga penawaran pagar.",
+  "lang": "id",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4F2EC",
+  "theme_color": "#1C2570",
+  "icons": [
+    { "src": "ikon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "ikon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "ikon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
